@@ -93,7 +93,7 @@ $(document).ready(function() {
             });
 
             if (loggedIn) {
-                window.open('dashboard.html') /*opens the target page while Id & password matches*/
+                window.open('MyHealthApp/icon-fontawesome.html') /*opens the target page while Id & password matches*/
             } else {
                 alert("Error Password or Username") /*displays error message*/
             }
