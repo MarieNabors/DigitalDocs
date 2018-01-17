@@ -93,7 +93,8 @@ $(document).ready(function() {
             });
 
             if (loggedIn) {
-                window.open('file:///Users/marienabors/_github/DigitalDocs/MyHealthApp/index.html') /*opens the target page while Id & password matches*/
+
+                window.open('MyHealthApp/index.html') /*opens the target page while Id & password matches*/
             } else {
                 alert("Error Password or Username") /*displays error message*/
             }
