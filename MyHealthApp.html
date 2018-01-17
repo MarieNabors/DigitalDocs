@@ -64,16 +64,14 @@
           <form role="form">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+              <input type="text" class="form-control" id="loginEmail" placeholder="Enter email">
             </div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+              <input type="password" class="form-control" id="loginPassword" placeholder="Enter password">
             </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-              <button type="submit" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+            
+              <button type="submit" class="btn btn-primary btn-block" id="doLogin"><span class="glyphicon glyphicon-off"></span> Login</button>
           </form>
         </div>
         <div class="modal-footer">
@@ -124,8 +122,8 @@
             <img class="third-slide" src="stockvault-medical-human-body-scan---man-and-technology198282.jpg" alt="Third slide">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Piece of mind for your best quality of Life.</h1>
-                <p>Gain a peice of mind knowing that all of your practitioners will have access to all of the same information.  No more worrying about possible gaps in in your healthcare.</p>
+                <h1>Peace of mind for your best quality of Life.</h1>
+                <p>Gain a peace of mind knowing that all of your health information is up to date and stored in one secure location. No more worrying about possible gaps in in your healthcare.</p>
                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
               </div>
             </div>
@@ -176,6 +174,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
     <script>
 $(document).ready(function(){
     $("#myBtn").click(function(){
