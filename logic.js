@@ -8,6 +8,9 @@ $(document).ready(function() {
         storageBucket: "myhealth-5761f.appspot.com",
         messagingSenderId: "158391104495"
     };
+
+    var aryLoginInfo = [];
+
     firebase.initializeApp(config);
 
     //create firebase references
@@ -49,7 +52,7 @@ $(document).ready(function() {
             if (data.password == data.cPassword) {
 
                 database.ref().push(data);
-                console.log(data.email, data.password);
+                //console.log(data.email, data.password);
 
             }
         };
@@ -57,10 +60,13 @@ $(document).ready(function() {
 
 
     database.ref().on("child_added", function(childSnapshot) {
-        email = email;
-        password = password;
-        var authKey = new Array[email, password]; //this one way of declaring array in javascript
         // Log everything that's coming out of snapshot
+
+        aryLoginInfo.push({
+            email: childSnapshot.val().email,
+            password: childSnapshot.val().password
+        });
+
         console.log(childSnapshot.val().email);
         console.log(childSnapshot.val().password);
 
@@ -77,25 +83,20 @@ $(document).ready(function() {
 
         if ($('#loginEmail').val() != '' && $('#loginPassword').val() != '') {
             //login the user
-            var data = {
-                email: $('#loginEmail').val(),
-                password: $('#loginPassword').val()
-            };
-            database.ref().on("value", function(snapshot) {
-                var snapEmail = snapshot.val().email;
-                var snapPassword = snapshot.val().password;
-                console.log(snapshot.val().email);
-                console.log(snapshot.val().password);
-
-                function check(form) { /*function to check userid & password*/
-                    /*the following code checkes whether the entered userid and password are matching*/
-                    if (data.email == snapEmail && data.password == snapPassword) {
-                        window.open('dashboard.html') /*opens the target page while Id & password matches*/
-                    } else {
-                        alert("Error Password or Username") /*displays error message*/
+            loggedIn = false;
+            aryLoginInfo.forEach(function(item) {
+                if (item.email == $('#loginEmail').val()) {
+                    if (item.password == $('#loginPassword').val()) {
+                        loggedIn = true;
                     }
                 }
             });
+
+            if (loggedIn) {
+                window.open('dashboard.html') /*opens the target page while Id & password matches*/
+            } else {
+                alert("Error Password or Username") /*displays error message*/
+            }
         }
     }); //do login
     //listener event, executes function when button clicked
