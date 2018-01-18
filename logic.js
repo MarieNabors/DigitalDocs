@@ -54,6 +54,7 @@ $(document).ready(function() {
                 database.ref().push(data);
                 //console.log(data.email, data.password);
 
+ document.forms["register"].reset();
             }
         };
     });
