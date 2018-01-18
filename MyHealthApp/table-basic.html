@@ -158,7 +158,7 @@
                                 <h4 class="card-title">Basic Table</h4>
                                 <h6 class="card-subtitle">Add class <code>.table</code></h6>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="apiTable">
                                         <!--Add Stats List Here-->
                                         <thead>
                                             <tr>
@@ -168,7 +168,7 @@
                                                 <th>Username</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tableBody">
                                             <tr>
                                                 <td>1</td>
                                                 <td>Deshmukh</td>
@@ -257,6 +257,65 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        function humanApi() {
+
+        var queryURL = "https://api.humanapi.co/v1/human?access_token=demo";
+        //Create AJAX call for the demoData
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).done(function(response) {
+
+            $("#1").text(`Blood Pressure: ${response.bloodPressure.systolic}/${response.bloodPressure.diastolic}`);
+            $("#2").text(`Heart Rate: ${response.bloodPressure.heartRate}`);
+            $("#3").text(`BMI: ${response.bmi.value}`);
+            $("#4").text(`Body Fat: ${response.bodyFat.value}`);
+            console.log(response);
+
+            
+
+
+  
+
+//loop through object
+//create new row for each property
+//create 2 columns
+//add property name to 1st column
+//add property value to 2nd column
+//add units to  values
+//append 2 columns to the row
+//append the row to the page
+
+
+  for (var property in response) {
+    var newTableRow = $("<tr>");
+    var newColumnProperty = $("<td>");
+    var newColumnValue = $("<td>");
+    var propertyName = property;
+    if (response[property].value)
+   var text  = response[property].value + " " + response[property].unit;
+
+else 
+    var text = "n/a"
+newColumnProperty.html(propertyName);
+newColumnValue.html(text);
+newTableRow.append(newColumnProperty);
+newTableRow.append(newColumnValue);
+$("#tableBody").append(newTableRow);
+}
+
+        });
+    }
+    humanApi();
+
+
+});
+
+    </script>
+
 </body>
 
 </html>
